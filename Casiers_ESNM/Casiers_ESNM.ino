@@ -19,43 +19,52 @@
 
 #include "FastLED.h"
 
-#define NUM_LEDS_PER_STRIP_L 55
-#define NUM_LEDS_PER_STRIP_M 39
-#define NUM_LEDS_PER_STRIP_S 28
+// Définition du nombre de leds par rapport à la taille du comportiment
+#define NUM_LEDS_PER_STRIP_L 55 // Grand
+#define NUM_LEDS_PER_STRIP_M 39 // Moyen
+#define NUM_LEDS_PER_STRIP_S 28 // Petit
 
+// Définition des pins de sortie pour chaque compartiment
 #define LIVRES_PIN 8
 #define NOUVEAUTES_PIN 9
 #define MULTIMEDIA_PIN 10
 #define MODEDECO_PIN 11
 #define DIVERS_PIN 12
 
-#define MOTION_PIN 7
-#define LED_PIN 13
+#define LED_PIN 13 // Pin pour debug
 
-CRGB LivresLeds[NUM_LEDS_PER_STRIP_M]; // Initialize led array 1
-CRGB NouveautesLeds[NUM_LEDS_PER_STRIP_S]; // Initialize led array 2
-CRGB MultimediaLeds[NUM_LEDS_PER_STRIP_M]; // Initialize led array 3
-CRGB ModeDecoLeds[NUM_LEDS_PER_STRIP_L]; // Initialize led array 4
-CRGB DiversLeds[NUM_LEDS_PER_STRIP_L]; // Initialize led array 5
+// Définition des pins d'entrée
+#define MOTION_PIN 7 //Capteur PIR
 
-boolean motion = false; //is someone moving ? true if someone is present
-boolean state = false; //is it turned on ? true = it is white
+
+// Initialisation des array
+CRGB LivresLeds[NUM_LEDS_PER_STRIP_M];      // array 1
+CRGB NouveautesLeds[NUM_LEDS_PER_STRIP_S];  // array 2
+CRGB MultimediaLeds[NUM_LEDS_PER_STRIP_M];  // array 3
+CRGB ModeDecoLeds[NUM_LEDS_PER_STRIP_L];    // array 4
+CRGB DiversLeds[NUM_LEDS_PER_STRIP_L];      // array 5
+
+// Initialisation du détecteur
+boolean motion = false; //Est-ce que quelqu'un bouge? true si quelqu'un est présent
+boolean state = false; //Est-ce allumé? true = it is white
 
 void setup() {
 
   delay (2000);
 
-  FastLED.setBrightness(100); // limit brightness
+  FastLED.setBrightness(100); // limite l'intensité
 
-  pinMode(MOTION_PIN, INPUT_PULLUP);  //set pin to up and enable pull up
-  pinMode(LED_PIN, OUTPUT); // set pin to out
+  pinMode(MOTION_PIN, INPUT_PULLUP);  //Défini la pin comme une entrée avec PullUp
+  pinMode(LED_PIN, OUTPUT); // Défini la pin comme sortie
 
+  // Initialisation des leds
   FastLED.addLeds<WS2812B, LIVRES_PIN>(LivresLeds, NUM_LEDS_PER_STRIP_M);
   FastLED.addLeds<WS2812B, NOUVEAUTES_PIN>(NouveautesLeds, NUM_LEDS_PER_STRIP_S);
   FastLED.addLeds<WS2812B, MULTIMEDIA_PIN>(MultimediaLeds, NUM_LEDS_PER_STRIP_M);
   FastLED.addLeds<WS2812B, MODEDECO_PIN>(ModeDecoLeds, NUM_LEDS_PER_STRIP_L);
   FastLED.addLeds<WS2812B, DIVERS_PIN>(DiversLeds, NUM_LEDS_PER_STRIP_L);
 
+  
   fill_solid(LivresLeds, NUM_LEDS_PER_STRIP_M, CRGB::Green); // Set all to red.
   fill_solid(NouveautesLeds, NUM_LEDS_PER_STRIP_S, CRGB::White); // Set all to white
   fill_solid(MultimediaLeds, NUM_LEDS_PER_STRIP_M, CRGB::Yellow); // Set all to Yellow
@@ -71,22 +80,24 @@ void loop() {
 
   motion = digitalRead(MOTION_PIN);
 
-  if (motion == true) // If the sensor's output goes low, motion is detected
+  // Si mouvement détecté
+  if (motion == true)
   {
     digitalWrite(LED_PIN, HIGH);
-    if (state == false) { // Light is off
+    if (state == false) { // La lumière est éteinte
 
-      //animate to white
-      toWhite();
+      toWhite(); // Jouer l'animation toWhite (Blanche)
 
       state = true;
-      delay(15000); // just played animation wait 5 sec
+      delay(15000); // Jouer l'animation et attendre 15 secondes
 
     } else {
-      delay(5000); // still someone here wait 2 sec
+      delay(5000); // Quelqu'un encore présent, attendre 5 secondes
     }
   }
-  else // no motion detected
+  
+  // Si pas de mouvement détecté
+  else
   {
     digitalWrite(LED_PIN, LOW);
     if (state == true) { // Light is on
@@ -95,16 +106,18 @@ void loop() {
       fadeToColor();
 
       state = false;
-      delay (5000); // just switched to usual colors wait 5 sec
+      delay (5000); // Bascule sur les couleurs standard - Attendre 5 secondes
     } else {
-      delay(300); //no motion detected and usual colors are on, just continue detecting
+      delay(300); //Pas de mouvement détecté. Couleurs allumées, continue la détection
     }
   }
 
 
 }
 
+//==== ANIMATIONS ===== 
 
+// Clignote blanc quelques secondes et reste fixe
 void toWhite() {
 
   for (short dot = 0; dot < NUM_LEDS_PER_STRIP_L; dot++) {
@@ -141,7 +154,7 @@ void toWhite() {
     }
 }
 
-
+// Allume les couleurs par dégradé d'intensité puis reste fixe
 void fadeToColor() {
   for (short col = 0; col < 255; col++) {
 
