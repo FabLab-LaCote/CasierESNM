@@ -34,3 +34,8 @@ Il a été réalisé par une classe de 9e ARMOS pour le cours d'économmie/droit
 
 ## Plans
 ![Plans](/pics/plan_1.png)
+
+## License
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+Some files may be released under a different license. When this is the case the license is specified in the file header. 
+This is mainly used for software codes for which Creative Commons licenses are not well suited.
