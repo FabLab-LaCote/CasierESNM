@@ -1,4 +1,14 @@
 /*
+Le meuble posé dans le hall de l'école permet aux élèves d'échanger leurs affaires. 
+Un capteur de proximité (PIR HC-SR501) détecte le mouvement d'une personne et le meuble joue 
+une animation prédéfinie.
+
+Il a été réalisé par une classe de 9e ARMOS pour le cours d'économmie/droit. 
+Le meuble permet de donner une deuxième vie aux objets qu'on n'utilise plus.
+
+License: This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+Some files may be released under a different license. When this is the case the license is specified in the file header. 
+This is mainly used for software codes for which Creative Commons licenses are not well suited.
   _____________________________________
   |   LIVRES    | NOUVEAU | MULTIMEDIA  |
   |             |         |             |
