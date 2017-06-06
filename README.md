@@ -16,4 +16,4 @@ Le meuble posé dans le hall de l'école permet aux élèves d'échanger leurs a
 * Favoriser la créativité et susciter de l'intérêt pour les branches scolaires par des problèmes concrets à résoudre
 
 ## Plans
-![Plans](/pics/plan_1.jpg)
+![Plans](/pics/plan_1.png)
