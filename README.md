@@ -21,6 +21,13 @@ Le meuble posé dans le hall de l'école permet aux élèves d'échanger leurs a
 * Capteur de proximité PIR HC-SR501
 * Ruban LED 5m 5V WS2812B
 * Alimentation 5V 8A
+* Câbles
+
+### Menuiserie
+* Bois MDF 20 mm
+* Vis à bois
+* Colle à bois
+* Peinture
 
 ## Plans
 ![Plans](/pics/plan_1.png)
