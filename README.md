@@ -15,5 +15,12 @@ Le meuble posé dans le hall de l'école permet aux élèves d'échanger leurs a
 * Documenter le projet et sa réalisation afin qu'il soit reproductible (publié sur internet)
 * Favoriser la créativité et susciter de l'intérêt pour les branches scolaires par des problèmes concrets à résoudre
 
+## Liste du matériel
+### Electronique
+* Microcontrôleur Arduino Nano
+* Capteur de proximité PIR HC-SR501
+* Ruban LED 5m 5V WS2812B
+* Alimentation 5V 8A
+
 ## Plans
 ![Plans](/pics/plan_1.png)
