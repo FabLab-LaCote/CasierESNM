@@ -6,6 +6,9 @@
 ## Concept
 
 Le meuble posé dans le hall de l'école permet aux élèves d'échanger leurs affaires.
+Un capteur de proximité (PIR HC-SR501) détecte le mouvement d'une personne et le meuble joue une animation prédéfinie.
+
+Il a été réalisé par une classe de 9e ARMOS pour le cours d'économmie/droit. Le meuble permet de donner une deuxième vie aux objets qu'on n'utilise plus.
 
 ## Objectifs didactiques
 
